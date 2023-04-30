@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+{%load boost %}
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>APPLIST</title>
+    <link rel="stylesheet" href='{% static "HOMELIST_CSS/style.css" %}'/>
+</head>
+<body>
+    <h1>アプリリスト</h1>
+    <ul>
+        {% for app,aurl in appname|zip:appurl %}
+        <li>
+            <h2><a href="{% url aurl %}">{{ app }}</a></h2>
+        </li>
+        {% endfor %}
+
+    </ul>
+</body>
+</html>

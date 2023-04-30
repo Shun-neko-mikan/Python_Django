@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>DLサイト</title>
+    <link rel="stylesheet" href="../../static/YoutubeDL_css/style.css">
+</head>
+<body>
+    {% if DLflag %}
+        <h1>
+            <a href="{%url 'YoutubeDL:download' %}">DLはこちらから</a>
+            <a href="{%url 'YoutubeDL:clean' %}"> フォルダをクリーン</a>
+        </h1>
+    {% else %}
+        <h1>DLフォーム</h1>
+    {% endif %}
+    <h1>{{ Message }}</h1>
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{form.as_table}}
+        <input type="submit" value="ダウンロード">
+    </form>
+
+    <p>ログアウトは
+        <a href="{% url 'YoutubeDL:logout' %}">こちら</a>
+    </p>
+
+</html>

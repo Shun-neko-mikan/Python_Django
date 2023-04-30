@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja" dir = "ltr">
+<head>
+    <meta charset="utf-8">
+    <title>ログイン認証</title>
+    <link rel="stylesheet" href="../../static/YoutubeDL_css/style.css"/>
+</head>
+<body>
+    <h1>ログイン認証</h1>
+
+    <div class = "reg">
+        <form method="post" action="{% url 'YoutubeDL:login' %}">
+            {% csrf_token %}
+            <table class="reg_form">
+                <tr>
+                    <td><label for="userid">ユーザーID:</label></td>
+                    <td><input type="text" name="userid"></td>
+                    <td><label for="password">パスワード：</label></td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+            </table>
+            <input type="submit" class="btn" value="ログイン">
+        </form>
+    </div>
+
+    <p class="message">アカウントはお持ちですか？</p>
+    <a href="{% url 'YoutubeDL:account_registration' %}" class="btn">新規登録</a>
+
+</body>
+</html>
