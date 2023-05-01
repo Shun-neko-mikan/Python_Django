@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+from django.core.management.utils import get_random_secret_key
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,9 +29,9 @@ MEDIA_DIR = BASE_DIR / "media"
 SECRET_KEY = "django-insecure-=25*%01jqp0h(8jn88u@gk4geqdai9428vw=vyz=2)ed_86cti"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["localhost",".pythonanywhere.com", "Shunenekomikan.pythonanywhere.com"]
 
 
 # Application definition
@@ -151,3 +151,13 @@ STATICFILES_DIRS = [STATIC_DIR,]
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = "/media/"
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+SECRET_KEY = get_random_secret_key()
+
+try:
+    from .local_settings import *
+except:
+    pass
